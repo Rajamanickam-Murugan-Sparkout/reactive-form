@@ -1,0 +1,8 @@
+span{
+    color: red;
+    font-size: small;
+}
+
+::placeholder{
+    opacity: 0.5;
+}

@@ -1,0 +1,82 @@
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card rounded rounded-5 w-50">
+        <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Registration Form</h2>
+            <form [formGroup]="registrationForm" onsubmit="">
+                <div class="form-outline mb-2">
+                    <label class="form-label">Name</label>
+                    <input type="text" name="username" class="form-control" formControlName="username" placeholder="enter your name"/>
+                    <span *ngIf="registrationForm.controls.username.invalid && registrationForm.controls.username.touched">name is required</span>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Your Email</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="example@gmail.com"/>
+                    <span *ngIf="registrationForm.controls.email.invalid && registrationForm.controls.email.touched">enter valid email address</span>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password" placeholder="password"/>
+                    <span *ngIf="registrationForm.controls.password.invalid && registrationForm.controls.password.touched">enter your email password</span>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" formControlName="dob" placeholder="dd-mm-yyyy"/>
+                    <span *ngIf="registrationForm.controls.dob.invalid && registrationForm.controls.dob.touched">choose your date of birth</span>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Gender</label>
+                    <div formGroupName="gender">
+                        <div class="form-check">
+                            <label>
+                            <input type="radio" name="value" formControlName="value" value="male" class="me-2 form-check-input">
+                            Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="value" value="female" formControlName="value" class="me-2 form-check-input">Female
+                            <label class="form-check-label"></label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="value" value="other" formControlName="value" class="me-2 form-check-input">Other
+                            <label class="form-check-label"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label">Hobbies</label>
+                        <div>
+                        <div class="d-flex align-items-center form-check">
+                            <input type="checkbox" class="me-2 form-check-input" formControlName="hobbies">
+                            <label>Cricket</label>
+                        </div>
+                        <div class="d-flex align-items-center form-check">
+                            <input type="checkbox" class="me-2 form-check-input" formControlName="hobbies">
+                            <label for="other">Kabaddi</label>
+                        </div>
+                        <div class="d-flex align-items-center form-check">
+                            <input type="checkbox" class="me-2 form-check-input" formControlName="hobbies">
+                            <label for="other">Running</label>
+                        </div>
+                        <div class="d-flex align-items-center form-check">
+                            <input type="checkbox" class="me-2 form-check-input" formControlName="hobbies">
+                            <label for="other">Writing</label>
+                        </div>
+                        </div>                         
+                </div>
+                <div class="my-3">
+                    <label class="mb-2">Upload Profile Image</label>
+                    <input type="file" class="form-control" >
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input me-2" type="checkbox" formControlName="terms" [(ngModel)]="termsAndConditions"/>
+                    <label class="form-check-label">Terms and Conditions</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-75" [disabled]="registrationForm.invalid" (click)="onSubmitForm()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
