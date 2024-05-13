@@ -9,7 +9,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class FormComponent {
 
-  termsAndConditions = true;
 
   registrationForm = new FormGroup({
     'username': new FormControl('', [Validators.required]),
@@ -20,7 +19,8 @@ export class FormComponent {
       value: new FormControl('', Validators.required)
     }),
     'hobbies': new FormControl(''),
-    'terms': new FormControl('', Validators.required),
+    'upload': new FormControl('', Validators.required),
+    'terms': new FormControl(false, Validators.requiredTrue),
   });
 
 
@@ -33,6 +33,17 @@ export class FormComponent {
     }
   }
 
+  profileUrl = ''
+
+  onChangeFile(e: any){
+    if(e.target.files){
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.profileUrl=event.target.result;
+      }
+    }
+  }
 
 }
 

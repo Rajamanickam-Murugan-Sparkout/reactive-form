@@ -2,7 +2,7 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="card rounded rounded-5 w-50">
         <div class="card-body p-5">
-            <h2 class="text-uppercase text-center mb-5">Registration Form</h2>
+            <h2 class="text-uppercase text-center mb-5 text-primary">Registration Form</h2>
             <form [formGroup]="registrationForm" onsubmit="">
                 <div class="form-outline mb-2">
                     <label class="form-label">Name</label>
@@ -64,17 +64,23 @@
                         </div>
                         </div>                         
                 </div>
-                <div class="my-3">
-                    <label class="mb-2">Upload Profile Image</label>
-                    <input type="file" class="form-control" >
+                <div class="my-3 d-flex justify-content-between">
+                    <div>
+                        <label class="mb-2">Upload Profile Image</label>
+                        <input type="file" class="form-control" (change)="onChangeFile($event)" formControlName="upload">
+                        <span *ngIf="registrationForm.controls.upload.invalid && registrationForm.controls.upload.touched">upload your profile image</span>
+                    </div>
+                    <div class="d-flex align-items-end">
+                        <img [src]="profileUrl" alt="" width="70px">
+                    </div>
                 </div>
 
                 <div class="form-check mb-4">
-                    <input class="form-check-input me-2" type="checkbox" formControlName="terms" [(ngModel)]="termsAndConditions"/>
-                    <label class="form-check-label">Terms and Conditions</label>
+                    <input class="form-check-input me-2" id="check" type="checkbox" formControlName="terms"/>
+                    <label class="form-check-label" for="check">Terms and Conditions</label>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary w-75" [disabled]="registrationForm.invalid" (click)="onSubmitForm()">Register</button>
+                    <button type="submit" class="btn btn-primary w-75" [disabled]="!registrationForm.valid" (click)="onSubmitForm()">Register</button>
                 </div>
             </form>
         </div>
