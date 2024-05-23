@@ -24,6 +24,9 @@ export class FormComponent {
   });
 
 
+  /**
+   * Determines whether submit form on
+   */
   onSubmitForm() {
     if (this.registrationForm.value) {
       console.log(this.registrationForm.value);
